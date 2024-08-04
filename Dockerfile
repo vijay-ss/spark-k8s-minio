@@ -19,7 +19,9 @@ RUN mkdir -p /opt && \
 
 # add scripts and update spark default config
 # ADD common.sh spark-master spark-worker /
-COPY common.sh spark-master spark-worker  /
-RUN chmod +x /common.sh /spark-master /spark-worker
-ADD spark-defaults.conf /opt/spark/conf/spark-defaults.conf
-ENV PATH $PATH:/opt/spark/bin
+COPY docker/common.sh docker/spark-master docker/spark-worker  /
+COPY spark_jobs spark_jobs
+
+RUN chmod +x common.sh spark-master spark-worker
+ADD docker/spark-defaults.conf /opt/spark/conf/spark-defaults.conf
+ENV PATH=$PATH:/opt/spark/bin
