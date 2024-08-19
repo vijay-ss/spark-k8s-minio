@@ -7,3 +7,4 @@ sleep 10
 
 kubectl create -f ./kubernetes/spark-worker-deployment.yaml
 kubectl apply -f ./kubernetes/minikube-ingress.yaml
+kubectl apply -f ./kubernetes/minio-dev.yaml
