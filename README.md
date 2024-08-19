@@ -38,16 +38,18 @@ sudo vi /etc/hosts
 127.0.0.1 spark-kubernetes
 ```
 
-Then run ```minikube tunnel```
+Then run `minikube tunnel`
 
 Now test it out in the browser: [http://spark-kubernetes/](http://spark-kubernetes/)
 
 ![](img/spark_webui.png)
 
-Try running Spark in interactive mode:
+Try running the Spark shell:
 ```
 kubectl exec spark-master-56465454b7-wrcb4 -it -- \
-    pyspark --conf spark.driver.bindAddress=10.244.0.9 --conf spark.driver.host=10.244.0.9
+    pyspark --conf spark.driver.bindAddress=10.244.0.9 \
+    --conf spark.driver.host=10.244.0.9 \
+    --conf spark.driver.bindAddress=127.0.0.1
 ```
 
 Or submit the spark job to the master node directly:
@@ -58,3 +60,16 @@ kubectl exec spark-master-56465454b7-wrcb4  -it -- \
     --conf spark.kubernetes.container.image=spark-hadoop:3.2.0 \
     --deploy-mode cluster
 ```
+
+## Minio
+
+`kubectl get svc -A`
+
+`kubectl get pods -n minio-dev`
+
+Run `minikube tunnel`
+
+In the browser navigate to either: http://localhost:9090/ or http://127.0.0.1:9001
+
+kubectl get pod -n minio-dev
+kubectl logs -n minio-dev minio-6fb9549d94-sm248
