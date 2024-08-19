@@ -14,9 +14,3 @@ kubectl exec ${SPARK_MASTER} -it -- \
     --conf spark.executor.instances=1 \
     --conf spark.kubernetes.container.image=spark-hadoop:3.2.0 \
     --deploy-mode cluster
-
-# kubectl exec ${SPARK_MASTER} -it -- \
-#     spark-submit \
-#     --conf spark.executor.instances=1 \
-#     --conf spark.kubernetes.container.image=spark-hadoop:3.2.0 \
-#     local:///spark_jobs/main.py

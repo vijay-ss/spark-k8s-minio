@@ -71,5 +71,11 @@ Run `minikube tunnel`
 
 In the browser navigate to either: http://localhost:9090/ or http://127.0.0.1:9001
 
-kubectl get pod -n minio-dev
-kubectl logs -n minio-dev minio-6fb9549d94-sm248
+## Running end-to-end process
+
+To simplify the execution of cluster creation, running the Spark job, and
+uploading a csv to Minio - run the following command:
+
+`make start`
+
+To view other commands, refer to the Makefile in the root level of the repo.
